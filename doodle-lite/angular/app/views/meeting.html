@@ -1,0 +1,11 @@
+<div class="well">
+  <h2>{{meeting.title}} <!--a href="#" class="btn btn-small btn-danger">Edit</a--></h2>
+  <p>{{meeting.description}}</p>
+  <div ng-repeat="meetingTime in meeting.meeting_times">
+    <p>{{meetingTime.time}} <input type="checkbox" name="{{meeting.id}}" /></p>
+  </div>
+</div>
+
+<div class="well">
+  <p>Got data:{{meeting}}</p>
+</div>
