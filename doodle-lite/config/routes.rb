@@ -1,4 +1,6 @@
 DoodleLite::Application.routes.draw do
+  resources :meeting_times
+
   resources :meetings
 
   # The priority is based upon order of creation: first created -> highest priority.
