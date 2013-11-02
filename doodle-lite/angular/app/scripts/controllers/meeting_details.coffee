@@ -10,14 +10,6 @@ angular.module('angularApp')
       else
         $scope.formContent.selected.push meetingId
 
-    $scope.interpolate = (userAnswers) ->
-      interpolated = []
-      for (i = 0; i < $scope.meeting.meeting_times; i++)
-        if userAnswers.indexOf $scope.meeting.meeting_times[i]  > -1
-          interpolated[i] = 1
-        else
-          interpolated[i] = 0
-
     $scope.submitAnswer = ->
       $http.post "http://127.0.0.1:3000/meetings/#{$routeParams.meetingId}/answers.json", $scope.formContent
       $route.reload()
