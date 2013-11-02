@@ -1,4 +1,4 @@
-<form class="well" ng-init="selected = []">
+<form ng-submit="submitAnswer()" ng-controller="MeetingDetailsCtrl" class="well">
   <h2>{{meeting.title}} <!--a href="#" class="btn btn-small btn-danger">Edit</a--></h2>
   <p>{{meeting.description}}</p>
   <div ng-repeat="meetingTime in meeting.meeting_times">
@@ -6,7 +6,7 @@
   </div>
 
   <input type="text" ng-model="formContent.nickname"id="nickname-field" placeholder="enter nickname" />
-  <a href="#" class="btn" ng-submit="submitAnswer()">submit</a>
+  <input type="submit" class="btn btn-primary btn-small" value="submit" />
 </div>
 
 <div class="well">

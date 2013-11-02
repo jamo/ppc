@@ -1,7 +1,9 @@
 DoodleLite::Application.routes.draw do
   resources :meeting_times
 
-  resources :meetings
+  resources :meetings do
+    resources :answers, only: [:index, :create]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -43,7 +45,7 @@ DoodleLite::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
