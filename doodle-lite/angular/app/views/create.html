@@ -1,7 +1,16 @@
-<div class="well">
-  <label>Title</label>
-  <input type="text" ng-model="formData.title" /> <br />
-  <label>Description</label>
-  <input type="text" ng-model="formData.description" />
-</div>
+  <form ng-submit="submitMeeting()" ng-controller="CreateMeetingCtrl" class="well">
+    <label>Title</label>
+    <input type="text" ng-model="formData.title" /> <br />
+    <label>Description</label>
+    <input type="text" ng-model="formData.description" />
+    <input ui-date ng-model="formData.date">
 
+    <input type="text" ng-model="formData.time" />
+
+    <input type="submit" value="Add time" class="btn btn-primary btn-small" ng-click="addTime()" />
+
+    <input type="submit" class="btn btn-primary btn-small" value="submit"/>
+    <ul>
+      <li ng-repeat="time in formData.meeting_times">{{time.date}} {{time.time}}</li>
+    </ul>
+  </form>

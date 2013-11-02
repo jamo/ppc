@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('angularApp', [])
+angular.module('angularApp', ['ui.date'])
   .config ($routeProvider) ->
     $routeProvider
       .when '/meetings/create',
