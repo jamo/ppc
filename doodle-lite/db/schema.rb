@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131102105547) do
+ActiveRecord::Schema.define(version: 20131102135517) do
 
   create_table "answers", force: true do |t|
     t.integer  "meeting_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20131102105547) do
     t.integer  "meeting_time_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "state"
   end
 
   create_table "meeting_times", force: true do |t|

@@ -1,14 +1,31 @@
 <form ng-submit="submitAnswer()" ng-controller="MeetingDetailsCtrl" class="well">
   <h2>{{meeting.title}} <!--a href="#" class="btn btn-small btn-danger">Edit</a--></h2>
   <p>{{meeting.description}}</p>
-  <div ng-repeat="meetingTime in meeting.meeting_times">
-    <p>{{meetingTime.time}} <input ng-click="toggleSelection(meetingTime.id)" type="checkbox" name="{{meeting.id}}" /></p>
-  </div>
+  <table class="table ">
+    <thead>
+      <tr>
+      </tr>
+    </thead>
+    <tbody>
 
-  <input type="text" ng-model="formContent.nickname"id="nickname-field" placeholder="enter nickname" />
-  <input type="submit" class="btn btn-primary btn-small" value="submit" />
-</div>
+    <tr>
+      <td>Nickname</td>
+        <td ng-repeat="meetingTime in meeting.meeting_times"> {{ meetingTime.time | date:'MM/dd/yyyy @ h:mma' }} <td>
+    </tr>
 
-<div class="well">
-  <p>Got data:{{meeting}}</p>
+    <tr ng-repeat="user_answer in answers">
+      <td>{{user_answer.user.nickname}}</td>
+      <td ng-repeat="answer in user_answer.meeting_time_answers" ng-class="{selected: answer.state==1}">{{answer.state}}</td>
+    </tr>
+
+    <tr>
+      <td><input type="text" ng-model="formContent.nickname"id="nickname-field" placeholder="enter nickname" /></td>
+      <td ng-repeat="meetingTime in meeting.meeting_times">  <input ng-click="toggleSelection(meetingTime.id)" type="checkbox" name="{{meeting.id}}" /></td>
+    </tr>
+
+  </tr>
+    </tbody>
+</table>
+
+<input type="submit" class="btn btn-primary btn-small" value="submit" />
 </form>

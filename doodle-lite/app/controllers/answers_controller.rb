@@ -8,13 +8,13 @@ class AnswersController < ApplicationController
     meeting = Meeting.find_by_id!(params[:meeting_id])
     answer = Answer.create(user: user, meeting: meeting)
 
-    params[:selected].each do |meeting_time_id|
-      meeting_time =  meeting.meeting_times.where(id: meeting_time_id).first
-      m = MeetingTimeAnswer.create(meeting_time: meeting_time)
+    meeting.meeting_times.each do |meeting_time|
+      state = if params[:selected].include? meeting_time.id then 1 else 0 end
+      m = MeetingTimeAnswer.create(meeting_time: meeting_time, state: state)
       answer.meeting_time_answers << m
-
     end
     answer.save!
+    render json: {status: 200}
   end
 
   def index

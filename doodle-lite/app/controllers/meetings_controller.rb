@@ -10,6 +10,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
+   @answers = @meeting.answers.includes(:meeting_time_answers, :user)
   end
 
   # GET /meetings/new
