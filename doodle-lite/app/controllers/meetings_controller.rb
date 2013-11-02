@@ -27,6 +27,12 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
 
+    params[:meeting_times].each do |meeting_time|
+      date = DateTime.parse "#{meeting_time[:date].split("T")[0]}T#{meeting_time[:time]}"
+      meeting_time = MeetingTime.create(time: date)
+      @meeting.meeting_times << meeting_time
+    end
+
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
